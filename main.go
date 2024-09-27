@@ -50,7 +50,6 @@ func loadQuestions(r *csv.Reader) match {
 
 }
 
-func welcomeMessage() {
 	fmt.Println("+++++++++++++++++++++++++++++")
 	fmt.Println("++++  Bem vindo ao quiz  ++++")
 	fmt.Println("+++++++++++++++++++++++++++++")
@@ -93,7 +92,7 @@ func startGame(m match) {
 }
 
 func createGame(qf string) {
-	welcomeMessage()
+	welcomeMenu()
 	questions := loadQuestions(readCSV(qf))
 	startGame(questions)
 }
