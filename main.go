@@ -50,11 +50,10 @@ func loadQuestions(r *csv.Reader) match {
 
 }
 
-func welcome() {
+func welcomeMessage() {
 	fmt.Println("+++++++++++++++++++++++++++++")
 	fmt.Println("++++  Bem vindo ao quiz  ++++")
 	fmt.Println("+++++++++++++++++++++++++++++")
-
 }
 
 func fazPergunta(p string, r int) bool {
@@ -74,26 +73,31 @@ func fazPergunta(p string, r int) bool {
 }
 
 func matchLoop(m *match) {
-	// loop := true
-
 	for k, v := range m.questions {
 		if p := fazPergunta(k, v); p {
 			m.corretas++
 		}
 	}
-	fmt.Println(m)
+	finishGame(m)
+}
+
+func finishGame(m *match) {
+	fmt.Print("Parábens, fim do jogo!\n")
+	fmt.Printf("Total de perguntas: %d\n", len(m.questions))
+	fmt.Printf("Você acertou %d\n", m.corretas)
+	os.Exit(0)
 }
 
 func startGame(m match) {
 	matchLoop(&m)
 }
 
-func createGame() {
-
-	welcome()
-	startGame(loadQuestions(readCSV(QUIZ_FILE)))
+func createGame(qf string) {
+	welcomeMessage()
+	questions := loadQuestions(readCSV(qf))
+	startGame(questions)
 }
 
 func main() {
-	createGame()
+	createGame(QUIZ_FILE)
 }
