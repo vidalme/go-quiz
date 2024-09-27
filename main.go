@@ -45,14 +45,15 @@ func loadQuestions(r *csv.Reader) match {
 		}
 		m.questions[j[0]] = a
 	}
-
 	return m
-
 }
 
-	fmt.Println("+++++++++++++++++++++++++++++")
-	fmt.Println("++++  Bem vindo ao quiz  ++++")
-	fmt.Println("+++++++++++++++++++++++++++++")
+func welcomeMenu() {
+	fmt.Println("++++++++++++++++++++++++++++++++++++++++++++++++++++")
+	fmt.Println("++++              Bem vindo ao quiz             ++++")
+	fmt.Println("++++              ENTER para iniciar            ++++")
+	fmt.Println("++++                ESC para sair               ++++")
+	fmt.Println("++++++++++++++++++++++++++++++++++++++++++++++++++++")
 }
 
 func fazPergunta(p string, r int) bool {
